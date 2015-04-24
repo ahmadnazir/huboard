@@ -27,20 +27,20 @@ module UseCase
     end
 
     def a_trial_available?(params)
-      if trial_available?(@customer) && user_is_owner(params)
-        params[:trial_available] = true
+      # if trial_available?(@customer) && user_is_owner(params)
+      #   params[:trial_available] = true
+      #   continue(params)
+      # else
         continue(params)
-      else
-        continue(params)
-      end
+      # end
     end
 
     def has_subscription?(params)
-      return continue(params) if params[:trial_available] || trial_active?(@customer)
-      if @customer && subscription_active?(@customer)
+      # return continue(params) if params[:trial_available] || trial_active?(@customer)
+      # if @customer && subscription_active?(@customer)
         return continue(params)
-      end
-      return fail :unauthorized
+      # end
+      # return fail :unauthorized
     end
 
     :private
